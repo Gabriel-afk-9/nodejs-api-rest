@@ -1,0 +1,28 @@
+{
+  "name": "nodejs-api-rest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./bin/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gabriel-afk-9/nodejs-api-rest.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gabriel-afk-9/nodejs-api-rest/issues"
+  },
+  "homepage": "https://github.com/Gabriel-afk-9/nodejs-api-rest#readme",
+  "dependencies": {
+    "debug": "^4.4.3",
+    "express": "^5.2.1",
+    "http": "^0.0.1-security"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
