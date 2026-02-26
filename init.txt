@@ -3,3 +3,4 @@ npm install http express debug --save
 npm install nodemon --save-dev
 nodemon ./bin/server.js (usado so no Dev)
 mudar para "node" no package.json
+npm install body-parser --save

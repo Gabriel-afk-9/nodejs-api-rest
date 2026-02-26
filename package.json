@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Gabriel-afk-9/nodejs-api-rest#readme",
   "dependencies": {
+    "body-parser": "^2.2.2",
     "debug": "^4.4.3",
     "express": "^5.2.1",
     "http": "^0.0.1-security"
