@@ -1,16 +1,18 @@
 'use strict'
 
 const express = require('express');
+const bodyParser = require('body-parser')
 
 const app = express();
 const router = express.Router();
 
-const route = router.get('/', (req, res, next) => {
-    res.status(200).send({
-        title: 'Node API',
-        version: '0.0.2'
-    });
-});
-app.use('/', route);
+const index = require('./routes/index');
+const product = require('./routes/product');
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
+
+app.use('/', index);
+app.use('/product', product);
 
 module.exports = app;
