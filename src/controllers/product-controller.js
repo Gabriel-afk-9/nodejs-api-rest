@@ -1,17 +1,66 @@
 'use strict'
 
-exports.post = (req, res) => {
-    res.status(201).send (req.body);
-};
+const mongoose = require('mongoose');
 
-exports.delete = (req, res) => {
-    res.status(200).send (req.body);
+const Product = mongoose.model('Product');
+
+exports.get = (req, res) => {
+    Product.find({
+        active: true
+    }, 'title price slug').then(data => {
+        res.status(200).send(data);
+    }).catch(e => {
+        res.status(400).send(e);
+    });
+}
+
+exports.getBySlug = (req, res) => {
+    Product.find({
+        slug: req.params.slug,
+        active: true
+    }, 'title description price slug tags').then(data => {
+        res.status(200).send(data);
+    }).catch(e => {
+        res.status(400).send(e);
+    });
+}
+
+exports.getById = (req, res) => {
+    Product.findById(req.params.id)
+        .then(data => {
+            res.status(200).send(data);
+        }).catch(e => {
+            res.status(400).send(e);
+        });
+}
+
+exports.getByTag = (req, res) => {
+    Product.find({tags: req.params.tag})
+        .then(data => {
+            res.status(200).send(data);
+        }).catch(e => {
+            res.status(400).send(e);
+        });
+}
+
+exports.post = (req, res) => {
+    var product = new Product(req.body);
+    // product.title = req.body.title;
+    product.save().then(x => {
+        res.status(201).send({ message: 'Produto cadastrado com sucesso' });
+    }).catch(e => {
+        res.status(400).send({ message: 'Falha ao cadastrar', data: e });
+    });
 };
 
 exports.put = (req, res) => {
     const id = req.params.id;
-    res.status(201).send ({
-        id: id, 
+    res.status(201).send({
+        id: id,
         item: req.body
     });
+};
+
+exports.delete = (req, res) => {
+    res.status(200).send(req.body);
 };
